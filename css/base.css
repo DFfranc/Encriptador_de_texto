@@ -1,0 +1,39 @@
+/* Importación de la fuente */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700&display=swap');
+
+/* Paleta de Colores */
+:root {
+    /* Dark blue*/
+    --darkBlue_100: #609ED4;
+    --darkBlue_200: #356EA9;
+    --darkBlue_300: #0A3871;
+    --darkBlue_400: #072B61;
+    --darkBlue_500: #052051;
+
+    /* Light blue */
+    --lightBlue_100: #F3F5FC;
+    --lightBlue_200: #EFF1FA;
+    --lightBlue_300: #E9ECF8;
+    --lightBlue_400: #AAB2D5;
+    --lightBlue_500: #757FB2;
+    
+    /* Gray */
+    --gray_100: #CED4DA; 
+    --gray_100: #ADB5BD; 
+    --gray_100: #868E96; 
+    --gray_100: #495057; 
+    --gray_100: #343A40; 
+}
+
+/* Diseños generales */
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
