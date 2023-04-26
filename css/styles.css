@@ -16,6 +16,7 @@ header {
     padding: 1rem;
     text-align: center;
     margin-bottom: 1rem;
+    width: 100%;
 }
 .titulo_principal{
     margin: 0 0 1.5rem 0;
@@ -29,8 +30,8 @@ header {
 .texto_entrada{
     resize: none; 
     border: none;
-    border-radius: 0.5rem;
-    padding: 1rem;
+    border-radius: 3.2rem;
+    padding: 2rem;
     width: 100%;
     min-height: 30rem;
     font-size: 3.2rem;
@@ -90,8 +91,40 @@ header {
     margin-bottom: 1.6rem;
 }
 
+/* Contenido principal en pantalla de PC (940px)*/
+@media (min-width: 940px) {
+    .contenido_principal{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 8rem;
+    }
+
+    .texto_entrada{
+        min-height: 40rem;
+    }
+
+    .btn_contenedor{
+        display: flex;
+        gap: 2.4rem;
+    }
+    .btn_encriptar,
+    .btn_desencriptar{
+        margin-bottom: 0;
+    }
+
+    /* Inserción de la imagen*/
+    .no_texto::before{
+        content: '';
+        display: block;
+        background-image: url(../img/Muñeco.svg);
+        height: 30.4rem;
+        width: 33.6rem;
+        margin-bottom: 2rem;
+    }
+}
+
 /* Footer */
-footer {
+footer{
     background-color: var(--darkBlue_500);
     padding: 2rem;
 }
@@ -99,4 +132,5 @@ footer {
     margin: 0;
     color: var(--gray_100);
     font-size: 1.2rem;
+    text-align: center;
 }
