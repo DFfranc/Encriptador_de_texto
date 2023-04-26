@@ -13,14 +13,14 @@ header {
     padding: 1rem;
 }
 .header_texto{
-    padding: 1rem;
     text-align: center;
-    margin-bottom: 1rem;
     width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 .titulo_principal{
-    margin: 0 0 1.5rem 0;
     color: var(--darkBlue_200);
+    margin: 0 0 1.5rem 0;
 }
 .subtitulo{
     margin: 0;
@@ -28,14 +28,14 @@ header {
 
 /* Textarea */
 .texto_entrada{
-    resize: none; 
-    border: none;
-    border-radius: 3.2rem;
-    padding: 2rem;
-    width: 100%;
-    min-height: 30rem;
     font-size: 3.2rem;
     color: var(--darkBlue_200);
+    width: 100%;
+    min-height: 30rem;
+    padding: 2rem;
+    border: none;
+    border-radius: 3.2rem;
+    resize: none; 
 }
 .texto_entrada::placeholder{
     opacity: 1;
@@ -54,29 +54,28 @@ header {
 .btn_desencriptar{
     display: block;
     width: 100%;
-   
     padding: 2.4rem;
     border: none;
     border-radius: 2.4rem;
 }
 .btn_encriptar{
-    background-color: var(--darkBlue_300);
     color: var(--white);
+    background-color: var(--darkBlue_300);
     margin-bottom: 2rem;
 }
 .btn_desencriptar{
-    background-color: var(--white);
-    border: 1px solid var(--darkBlue_300);
     color: var(--darkBlue_300);
+    background-color: var(--white);
     margin-bottom: 6.4rem;
+    border: 1px solid var(--darkBlue_300);
 }
 
 /* Salida de texto */
 .texto_salida{
     background-color: var(--white);
     padding: 3.2rem;
-    border-radius: 3.2rem;
     margin-bottom: 4rem;
+    border-radius: 3.2rem;
 }
 .no_texto{
     text-align: center;
@@ -84,9 +83,9 @@ header {
 }
 .no_texto span{
     display: block;
-    text-align: center;
-    font-weight: 700;
     font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
     color: var(--gray_500);
     margin-bottom: 1.6rem;
 }
@@ -129,8 +128,8 @@ footer{
     padding: 2rem;
 }
 .copyright{
-    margin: 0;
-    color: var(--gray_100);
     font-size: 1.2rem;
     text-align: center;
+    color: var(--gray_100);
+    margin: 0;
 }
