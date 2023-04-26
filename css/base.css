@@ -19,15 +19,19 @@
     
     /* Gray */
     --gray_100: #CED4DA; 
-    --gray_100: #ADB5BD; 
-    --gray_100: #868E96; 
-    --gray_100: #495057; 
-    --gray_100: #343A40; 
+    --gray_200: #ADB5BD; 
+    --gray_300: #868E96; 
+    --gray_400: #495057; 
+    --gray_500: #343A40; 
+
+    /* Neutros */
+    --white: #FFFFFF;
 }
 
 /* Diseños generales */
 html {
     box-sizing: border-box;
+    font-size: 62.5%;
 }
 
 *, *:before, *:after {
@@ -36,4 +40,11 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    background-color: var(--lightBlue_200);
+}
+
+.container{
+    width: min(95%, 120rem);
+    margin: 0 auto;
 }
