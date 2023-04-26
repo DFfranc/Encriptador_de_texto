@@ -58,16 +58,28 @@ header {
     border: none;
     border-radius: 2.4rem;
 }
+.btn_encriptar:hover,
+.btn_desencriptar:hover {
+    cursor: pointer;
+}
+
 .btn_encriptar{
     color: var(--white);
     background-color: var(--darkBlue_300);
     margin-bottom: 2rem;
 }
+.btn_encriptar:hover{
+    background-color: var(--darkBlue_200);
+}
+
 .btn_desencriptar{
     color: var(--darkBlue_300);
     background-color: var(--white);
     margin-bottom: 6.4rem;
     border: 1px solid var(--darkBlue_300);
+}
+.btn_desencriptar:hover{
+    background-color: var(--gray_100);
 }
 
 /* Salida de texto */
@@ -80,6 +92,8 @@ header {
 .no_texto{
     text-align: center;
     color: var(--gray_400);
+    opacity: 1;
+    transition: opacity 150ms ease-in-out;
 }
 .no_texto span{
     display: block;
@@ -88,6 +102,9 @@ header {
     text-align: center;
     color: var(--gray_500);
     margin-bottom: 1.6rem;
+}
+.ocultar {
+    opacity: 0;
 }
 
 /* Contenido principal en pantalla de PC (940px)*/
@@ -105,12 +122,17 @@ header {
     .btn_contenedor{
         display: flex;
         gap: 2.4rem;
+        margin-bottom: 4rem;
     }
     .btn_encriptar,
     .btn_desencriptar{
         margin-bottom: 0;
     }
 
+
+    .texto_salida {
+        width: 40rem;
+    }
     /* Inserción de la imagen*/
     .no_texto::before{
         content: '';
