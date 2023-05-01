@@ -1,51 +1,8 @@
+import {validarEspacio, validarMayúsAcentos, mostrarAlerta} from "./funciones.js";
+import {entrada, llaves, vocales} from './variables.js';
+
 document.addEventListener("DOMContentLoaded", () => {
-    const entrada = document.querySelector(".texto_entrada");
-    const encriptacion = document.querySelector(".encriptacion");
-    const btn_encriptar = document.querySelector(".btn_encriptar");
-
-    /**
-     * Verifica si el elemento en el que se agrega la encriptación ya hay una encriptación previa, si la hay
-     * elimina el texto anterior y agrega el nuevo.
-     * @param texto texto encriptado que se ingresará en el elemento
-     */
-    function validarEspacio(texto) {
-        if (encriptacion.textContent !== "") {
-            encriptacion.textContent = "";
-        }
-
-        encriptacion.textContent = texto;
-    }
-
-    /**
-     * Verifica que el texto ingresado no tenga mayúsculas ni acentos
-     * @param texto texto a verificar
-     * @returns esValido - true si el texto no posee mayúsculas ni acentos, false si al menos una letra es 
-     * mayúscula o tiene acentos
-     */
-    function validarMayúsAcentos(texto) {
-        let esValido = true;
-
-        // Si tiene mayúsculas o acentos
-        if (/[A-ZáéíóúÁÉÍÓÚ]/.test(texto)) {
-            esValido = false;
-        }
-
-        return esValido;
-    }
-
-    /**
-     * Muestra una alerta cuando hay un error
-     * @param icon icono de la alerta
-     * @param title titulo de la alerta
-     * @param text texto de la alerta
-     */
-    function mostrarAlerta(contenido) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: contenido,
-        })
-    }
+    var btn_encriptar = document.querySelector(".btn_encriptar");
 
     /**
      * Encripta una cadena de texto ingresada por el usuario
@@ -55,9 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function encriptarTexto(texto) {
         const textoArray = texto.split(""); // Obtener un arreglo donde cada índice es una letra
         const arrayEncriptado = [];
-
-        const vocales = ["a", "e", "i", "o", "u"];
-        const llaves = ["enter", "imes", "ai", "ober", "ufat"]; // Cada llave representa su respectiva vocal
 
         /* Itera sobre el arreglo que contiene cada una de las letras del texto y sobre el arreglo de vocales
         - Si la letra es una vocal: realiza la encriptación según la llave correspondiente y la agrega a un arreglo
@@ -69,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (textoArray[i] === vocales[j]) {
                     arrayEncriptado[i] = llaves[j];
 
+                // Se valida que esté indefinido para evitar que se reescriba el elemento cuando ya exista una correspondencia
                 } else if (arrayEncriptado[i] === undefined) {
                     arrayEncriptado[i] = textoArray[i];
                 }
@@ -108,13 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarAlerta('Prueba a ingresar algo de texto antes de encriptar');
         }
     }
-
-    // Si se elimina el texto del <textarea>, también se elimina la encriptación
-    entrada.addEventListener("input", () => {
-        if (entrada.value === "" && encriptacion.textContent !== "") {
-            encriptacion.textContent = "";
-        }
-    });
 
     btn_encriptar.addEventListener("click", encriptar);
 });

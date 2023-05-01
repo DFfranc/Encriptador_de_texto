@@ -141,8 +141,8 @@ header {
     }
 }
 
-/* Texto encriptado */
-.encriptacion{
+/* Texto encriptado o desencriptado */
+.salida{
     font-size: 2.4rem;
     color: var(--gray_400);
     margin: 0;
