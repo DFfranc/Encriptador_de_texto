@@ -1,4 +1,5 @@
-import { entrada } from "../base/variables.js";
+import { entrada, salida, btn_copiar } from "../base/variables.js";
+import { copiarTexto } from "../base/funciones.js";
 const aunNoTexto = document.querySelector(".no_texto");
 
 /* Se utiza esta variable y clearTimeout() como solución al problema de que si el usuario borra muy rápido,
@@ -35,3 +36,13 @@ entrada.addEventListener("input", () => {
 window.addEventListener("beforeunload", function(e) {
     e.preventDefault();
 });
+
+// Si se elimina el texto del <textarea>, también se elimina la encriptación o desencriptación y el boton de copiar
+entrada.addEventListener("input", () => {
+    if (entrada.value === "" && salida.textContent !== "") {
+        salida.textContent = "";
+        btn_copiar.remove();
+    }
+});
+
+btn_copiar.addEventListener("click", copiarTexto);

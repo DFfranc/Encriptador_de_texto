@@ -1,5 +1,5 @@
-import {entrada} from './variables.js';
-const salida = document.querySelector(".salida");
+import { salida, btn_copiar } from "./variables.js";
+const div_btn_copiar = document.querySelector(".div_btn_copiar");
 
 /**
  * Verifica si el elemento en el que se agrega la encriptación ya hay una encriptación previa, si la hay
@@ -46,10 +46,16 @@ export function mostrarAlerta(icono, titulo, contenido) {
     })
 }
 
-// Si se elimina el texto del <textarea>, también se elimina la encriptación
-entrada.addEventListener("input", () => {
-    if (entrada.value === "" && salida.textContent !== "") {
-        salida.textContent = "";
-    }
-});
+export function mostrarBotonCopiar(){
+    btn_copiar.textContent = "Copiar";
+    btn_copiar.classList.add("btn_copiar");
+
+    div_btn_copiar.appendChild(btn_copiar);
+}
+
+export function copiarTexto(){
+    navigator.clipboard.writeText(salida.textContent)
+        .then(() => console.log('texto copiado en el portapapeles'))
+        .catch((err) => console.log('No se pudo copiar el texto', err));
+}
 
