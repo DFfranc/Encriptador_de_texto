@@ -1,5 +1,5 @@
-import {validarEspacio, validarMayúsAcentos, mostrarAlerta} from "./funciones.js";
-import {entrada, llaves, vocales} from './variables.js';
+import {validarEspacio, validarMayúsAcentos, mostrarAlerta} from "../base/funciones.js";
+import {entrada, llaves, vocales} from '../base/variables.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,18 +17,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const posFinales = [];
 
         for(let i = 0; llaves.length > i; i++){
+            // Buscar si el texto tiene al menos una coincidencia con las llave de encriptación en cuestión
             let posInicio = encriptacion.indexOf(llaves[i]);
     
             while(posInicio !== -1){
-                let posFinal = posInicio + llaves[i].length;
+                let posFinal = posInicio + llaves[i].length; // Posición inicial + la longitud de la llave
     
+                // LLenar los arreglos con las posiciones
                 posIniciales.push(posInicio);
                 posFinales.push(posFinal);
     
+                /* Volver a buscar la misma llave pero comenzando desde una posición más allá con el fin de 
+                    saber si hay más coincidencias 
+                */
                 posInicio = encriptacion.indexOf(llaves[i], posInicio + 1);
             }
         }
     
+        // Ordenar las posiciones en orden ascendente
         posIniciales.sort((a, b) => a - b);
         posFinales.sort((a, b) => a - b);
     
@@ -36,42 +42,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /**
-     * Desencripta una cadena de texto ingresada por el usuario
+     * Desencripta una cadena de texto ingresada por el usuario en el campo de texto
      * @param texto texto a desencriptar
      * @returns texto desencriptado
      */
     function desencriptarTexto(texto) {
-        let textoEncriptado = "";
-        let arrayEncriptado = [];
+        let textoEncriptado = ""; // String que contendrá las llaves de encriptación delimitadas por guiones "-"
+        let arrayEncriptado = []; // Contendrá el textoEncriptado en forma de arreglo para facilitar el reemplazo de las llaves por las vocales
+        let arrayDesencriptado = []; // Array con el texto descencriptado
 
-        const [posIniciales, posFinales] = analizarEncriptacion(texto);
+        // Obtener las posiciones de las llaves de encriptación
+        const [posIniciales, posFinales] = analizarEncriptacion(texto); 
 
-        let posAnterior = 0;
+        let posAnterior = 0; // Almacena la última posición utilizada por el método substring().
+
         for(let i = 0; posIniciales.length > i; i++){
+            // Construir el texto encriptado delimitando las llaves por guiones "-"
             textoEncriptado += texto.substring(posAnterior, posIniciales[i]);
-            textoEncriptado += ",";
+            textoEncriptado += "-";
             textoEncriptado += texto.substring(posIniciales[i], posFinales[i]);
-            textoEncriptado += ",";
-            posAnterior = posFinales[i];
+            textoEncriptado += "-";
+            posAnterior = posFinales[i]; // Cambiar la posición anterior por la ultima posición utilizada por substring()
         }
 
+        // Agregar la última parte al textoEncriptado
         textoEncriptado += texto.substring(posAnterior);
 
-        let arrayDesencriptado = [];
-        arrayEncriptado = textoEncriptado.split(",");
+        // Convertir en un arreglo el textoEncriptado separando cada elemento por guiones
+        arrayEncriptado = textoEncriptado.split("-"); 
         
-        /* Itera sobre el arreglo que contiene cada una de las letras del texto y sobre el arreglo de llaves
+        /* Itera sobre el arreglo que contiene cada una de las letras y llaves del texto encriptado
+           y sobre el arreglo de llaves
         - Si la letra es una llave: realiza la desencriptación según la vocal correspondiente y la agrega a un 
                                     arreglo con el texto desencriptado.
         - Si la letra no es una llave: agrega exactamente la misma letra al arreglo con el texto desencriptado.
         */
         for (let i = 0; arrayEncriptado.length > i; i++) {
-            
+
             for (let j = 0; llaves.length > j; j++) {
                 if (arrayEncriptado[i] === llaves[j]) {
                     arrayDesencriptado[i] = vocales[j];
-                    
-
+                
                 // Se valida que esté indefinido para evitar que se reescriba el elemento cuando ya exista una correspondencia
                 } else if (arrayDesencriptado[i] === undefined) {
                     arrayDesencriptado[i] = arrayEncriptado[i];
@@ -88,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             return textoDesencriptado;
         } else {
-            mostrarAlerta('A ocurrido un error al desencriptar el texto');
+            mostrarAlerta('error', 'Error', 'A ocurrido un error al desencriptar el texto');
             return null;
         }
     }
@@ -106,10 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 validarEspacio(textoDesencriptado);
 
             } else {
-                mostrarAlerta('El texto no puede contener mayúsculas ni acentos');
+                mostrarAlerta('error', 'Error', 'El texto no puede contener mayúsculas ni acentos');
             }
         } else {
-            mostrarAlerta('Prueba a ingresar algo de texto antes de desencriptar');
+            mostrarAlerta('error', 'Error', 'Prueba a ingresar algo de texto antes de desencriptar');
         }
     }
 

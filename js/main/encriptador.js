@@ -1,5 +1,5 @@
-import {validarEspacio, validarMayúsAcentos, mostrarAlerta} from "./funciones.js";
-import {entrada, llaves, vocales} from './variables.js';
+import {validarEspacio, validarMayúsAcentos, mostrarAlerta} from "../base/funciones.js";
+import {entrada, llaves, vocales} from '../base/variables.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     var btn_encriptar = document.querySelector(".btn_encriptar");
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             return textoEncriptado;
         } else {
-            mostrarAlerta('A ocurrido un error al encriptar el texto');
+            mostrarAlerta('error', 'Error', 'A ocurrido un error al encriptar el texto');
             return null;
         }
     }
@@ -57,10 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 validarEspacio(textoEncriptado);
 
             } else {
-                mostrarAlerta('El texto no puede contener mayúsculas ni acentos');
+                mostrarAlerta('error', 'Error', 'El texto no puede contener mayúsculas ni acentos');
             }
         } else {
-            mostrarAlerta('Prueba a ingresar algo de texto antes de encriptar');
+            mostrarAlerta('error', 'Error','Prueba a ingresar algo de texto antes de encriptar');
         }
     }
 

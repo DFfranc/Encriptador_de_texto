@@ -33,15 +33,15 @@ export function validarMayúsAcentos(texto) {
 
 
 /**
- * Muestra una alerta cuando hay un error
- * @param icon icono de la alerta
- * @param title titulo de la alerta
- * @param text texto de la alerta
+ * Muestra una alerta 
+ * @param icono icono de la alerta
+ * @param titulo titulo de la alerta
+ * @param contenido texto de la alerta
  */
-export function mostrarAlerta(contenido) {
+export function mostrarAlerta(icono, titulo, contenido) {
     Swal.fire({
-        icon: 'error',
-        title: 'Error',
+        icon: icono,
+        title: titulo,
         text: contenido,
     })
 }
