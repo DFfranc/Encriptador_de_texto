@@ -1,4 +1,4 @@
-import { entrada, salida, btn_copiar } from "../base/variables.js";
+import { entrada, btn_copiar } from "../base/variables.js";
 import { copiarTexto } from "../base/funciones.js";
 const aunNoTexto = document.querySelector(".no_texto");
 
@@ -37,12 +37,18 @@ window.addEventListener("beforeunload", function(e) {
     e.preventDefault();
 });
 
-// Si se elimina el texto del <textarea>, también se elimina la encriptación o desencriptación y el boton de copiar
+// Elimina la encriptación o desencriptación y el botón de copiar cuando el <textarea> presenta cambios
 entrada.addEventListener("input", () => {
-    if (entrada.value === "" && salida.textContent !== "") {
-        salida.textContent = "";
+    /* Se selecciona aquí puesto que es un elemento generado con JavaScript y no proviene directamente del DOM,
+    por lo que si selecciona fuera de este evento, es posible que se seleccione antes de que siquiera exista y
+    por ende no funcione */
+    const salida = document.querySelector(".salida"); 
+
+    if (salida !== null) {
+        salida.remove();
         btn_copiar.remove();
     }
 });
 
+// Permite copiar el texto encriptado o desencriptado al dar click en el botón de copiar
 btn_copiar.addEventListener("click", copiarTexto);

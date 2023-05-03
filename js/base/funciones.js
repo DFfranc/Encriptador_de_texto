@@ -1,5 +1,5 @@
-import { salida, btn_copiar } from "./variables.js";
-const div_btn_copiar = document.querySelector(".div_btn_copiar");
+import { btn_copiar } from "./variables.js";
+const containerSalida = document.querySelector(".container_salida")
 
 /**
  * Verifica si el elemento en el que se agrega la encriptación ya hay una encriptación previa, si la hay
@@ -7,11 +7,15 @@ const div_btn_copiar = document.querySelector(".div_btn_copiar");
  * @param texto texto encriptado que se ingresará en el elemento
  */
 export function validarEspacio(texto) {
+    const salida = document.createElement("P");
+    salida.classList.add("salida");
+
     if (salida.textContent !== "") {
         salida.textContent = "";
     }
 
     salida.textContent = texto;
+    containerSalida.appendChild(salida);
 }
 
 /**
@@ -46,14 +50,26 @@ export function mostrarAlerta(icono, titulo, contenido) {
     })
 }
 
+/**
+ * Crea el botón que permite copiar el texto encriptado o desencriptado, lo añade al DOM y le agrega 
+ * una clase para darle estilos
+ */
 export function mostrarBotonCopiar(){
     btn_copiar.textContent = "Copiar";
     btn_copiar.classList.add("btn_copiar");
 
-    div_btn_copiar.appendChild(btn_copiar);
+    containerSalida.appendChild(btn_copiar);
 }
 
+/**
+ * Permite copiar el texto encriptado o desencriptado; funcionalidad pensada para el botón de copiar (mostrarBotonCopiar())
+ */
 export function copiarTexto(){
+    /* Se selecciona aquí puesto que es un elemento generado con JavaScript y no proviene directamente del DOM,
+    por lo que si selecciona fuera de este evento, es posible que se seleccione antes de que siquiera exista y
+    por ende no funcione */
+    const salida = document.querySelector(".salida");
+
     navigator.clipboard.writeText(salida.textContent)
         .then(() => console.log('texto copiado en el portapapeles'))
         .catch((err) => console.log('No se pudo copiar el texto', err));

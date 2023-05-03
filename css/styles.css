@@ -50,8 +50,10 @@ header {
 }
 
 /* Botones */
+/* Se incluyen los botones para encriptar, desencriptar y copiar texto*/
 .btn_encriptar,
-.btn_desencriptar{
+.btn_desencriptar,
+.btn_copiar{
     display: block;
     width: 100%;
     padding: 2.4rem;
@@ -59,7 +61,8 @@ header {
     border-radius: 2.4rem;
 }
 .btn_encriptar:hover,
-.btn_desencriptar:hover {
+.btn_desencriptar:hover,
+.btn_copiar {
     cursor: pointer;
 }
 
@@ -72,28 +75,41 @@ header {
     background-color: var(--darkBlue_200);
 }
 
-.btn_desencriptar{
+.btn_desencriptar,
+.btn_copiar{
     color: var(--darkBlue_300);
     background-color: var(--white);
     margin-bottom: 6.4rem;
     border: 1px solid var(--darkBlue_300);
 }
-.btn_desencriptar:hover{
+.btn_desencriptar:hover,
+.btn_copiar:hover{
     background-color: var(--gray_100);
 }
 
+.btn_copiar{
+    margin: 0;
+    width: calc(100% - 3.2rem);
+    align-self: center;
+}
+
 /* Salida de texto */
-.texto_salida{
+.container_salida{
     background-color: var(--white);
-    padding: 3.2rem;
     margin-bottom: 4rem;
     border-radius: 3.2rem;
+
+    /* Estilos para cuando se agrega el botón de copiar */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .no_texto{
     text-align: center;
     color: var(--gray_400);
     opacity: 1;
     transition: opacity 250ms ease-in-out;
+    padding: 3.2rem;
 }
 .no_texto span{
     display: block;
@@ -127,7 +143,7 @@ header {
     }
 
 
-    .texto_salida {
+    .container_salida {
         width: 40rem;
     }
     /* Inserción de la imagen*/
@@ -146,6 +162,7 @@ header {
     font-size: 2.4rem;
     color: var(--gray_400);
     margin: 0;
+    padding: 3.2rem;
 }
 
 /* Footer */
