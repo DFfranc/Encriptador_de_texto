@@ -1,0 +1,76 @@
+/* Esta hoja de estilos incluye los diseños referentes a eventos generados con JavaScript tales como: 
+   - Mostrar y ocultar el texto de no hay mensajes aún
+   - Aviso de texto copiado cuando el usuario da click en el botón de copiar
+   - Mensaje de cuando el usuario está escribiendo algo 
+*/
+
+@import url(./base.css);
+
+/* Mostrar y ocultar el texto de no hay mensajes aún*/
+.no_texto{
+    text-align: center;
+    color: var(--gray_400);
+    opacity: 1;
+    transition: opacity 250ms ease-in-out;
+    padding: 3.2rem;
+}
+.no_texto span{
+    display: block;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--gray_500);
+    margin-bottom: 1.6rem;
+}
+
+@media (min-width: 940px) {
+    /* Inserción de la imagen*/
+    .no_texto::before{
+        content: '';
+        display: block;
+        background-image: url(../img/Muñeco.svg);
+        height: 30.4rem;
+        width: 33.6rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Aviso de texto copiado cuando el usuario da click en el botón de copiar */
+.container_btn_copiar{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.aviso_copiado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: -4rem;
+    height: 3.5rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+
+    background-color: var(--darkBlue_400);
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+}
+.mostrar{
+    opacity: 1;
+}
+.texto_aviso{
+    color: var(--white);
+    margin: 0;
+}
+.aviso_copiado::after{
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 12px solid var(--darkBlue_400);
+    top: 3.5rem;
+    left: calc(50% - 2.5rem);
+} 

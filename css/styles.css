@@ -99,26 +99,12 @@ header {
     margin-bottom: 4rem;
     border-radius: 3.2rem;
 
-    /* Estilos para cuando se agrega el botón de copiar */
+    /* Estilos necesarios para cuando se agrega el botón de copiar */
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: space-between;
 }
-.no_texto{
-    text-align: center;
-    color: var(--gray_400);
-    opacity: 1;
-    transition: opacity 250ms ease-in-out;
-    padding: 3.2rem;
-}
-.no_texto span{
-    display: block;
-    font-size: 2.4rem;
-    font-weight: 700;
-    text-align: center;
-    color: var(--gray_500);
-    margin-bottom: 1.6rem;
-}
+
 
 /* Contenido principal en pantalla de PC (940px)*/
 @media (min-width: 940px) {
@@ -142,18 +128,8 @@ header {
         margin-bottom: 0;
     }
 
-
     .container_salida {
         width: 40rem;
-    }
-    /* Inserción de la imagen*/
-    .no_texto::before{
-        content: '';
-        display: block;
-        background-image: url(../img/Muñeco.svg);
-        height: 30.4rem;
-        width: 33.6rem;
-        margin-bottom: 2rem;
     }
 }
 
