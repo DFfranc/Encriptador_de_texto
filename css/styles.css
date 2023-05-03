@@ -139,6 +139,8 @@ header {
     color: var(--gray_400);
     margin: 0;
     padding: 3.2rem;
+    opacity: 0;
+    transition: opacity 100ms ease-in-out;
 }
 
 /* Footer */

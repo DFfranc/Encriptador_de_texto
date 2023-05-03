@@ -1,4 +1,4 @@
-import {validarEspacio, validarMayúsAcentos, mostrarAlerta, mostrarBotonCopiar} from "../base/funciones.js";
+import {insertarSalida, validarMayúsAcentos, mostrarAlerta, insertarBotonCopiar} from "../base/funciones.js";
 import {entrada, llaves, vocales} from '../base/variables.js';
 
 
@@ -114,8 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (texto !== "") {
             if (validarMayúsAcentos(texto)) {
                 const textoDesencriptado = desencriptarTexto(texto);
-                validarEspacio(textoDesencriptado);
-                mostrarBotonCopiar();
+                insertarSalida(textoDesencriptado);
+                insertarBotonCopiar();
 
             } else {
                 mostrarAlerta('error', 'Error', 'El texto no puede contener mayúsculas ni acentos');

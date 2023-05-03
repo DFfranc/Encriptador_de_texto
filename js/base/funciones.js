@@ -1,13 +1,14 @@
-import { btn_copiar } from "./variables.js";
+// import { btn_copiar } from "./variables.js";
 const containerSalida = document.querySelector(".container_salida");
 const containerBtnCopiar = document.querySelector('.container_btn_copiar');
+const aunNoTexto = document.querySelector(".no_texto");
+const siTexto = document.querySelector(".si_texto");
 
 /**
- * Verifica si el elemento en el que se agrega la encriptación ya hay una encriptación o descencriptacion previa,
- * si la hay elimina el elemento anterior y agrega el nuevo.
+ * Agrega el resultado de la encriptación o desencriptación al DOM
  * @param texto texto encriptado que se ingresará en el elemento
  */
-export function validarEspacio(texto) {
+export function insertarSalida(texto) {
     const salida = document.createElement("P");
     salida.classList.add("salida");
     salida.textContent = texto;
@@ -15,7 +16,37 @@ export function validarEspacio(texto) {
     // Validar si hay un elemento previo y eliminarlo en caso de que si
     containerSalida.querySelector(".salida")?.remove();
 
+    // Ocultar los mensajes "texto presente" y "texto no presente" cuando hay una encriptación o desencriptación
+    aunNoTexto.style.display = "none";
+    siTexto.style.display = "none";
+
     containerSalida.appendChild(salida);
+    setTimeout(()=>{
+        salida.style.opacity = "1";
+    }, 100);
+}
+
+
+/**
+ * Crea el botón que permite copiar el texto encriptado o desencriptado, lo añade al DOM y le agrega 
+ * una clase para darle estilos
+ */
+export function insertarBotonCopiar(){
+    const btn_copiar = document.createElement('BUTTON');
+    btn_copiar.textContent = "Copiar";
+    btn_copiar.classList.add("btn_copiar");
+
+    containerBtnCopiar.querySelector(".btn_copiar")?.remove();
+
+    // Permite copiar el texto encriptado o desencriptado al dar click en el botón de copiar
+    btn_copiar.addEventListener("click", copiarTexto);
+    
+    containerBtnCopiar.appendChild(btn_copiar);
+    btn_copiar.classList.add("animated");
+
+    setTimeout(()=>{
+        btn_copiar.classList.remove("animated");
+    }, 300);
 }
 
 /**
@@ -51,18 +82,7 @@ export function mostrarAlerta(icono, titulo, contenido) {
 }
 
 /**
- * Crea el botón que permite copiar el texto encriptado o desencriptado, lo añade al DOM y le agrega 
- * una clase para darle estilos
- */
-export function mostrarBotonCopiar(){
-    btn_copiar.textContent = "Copiar";
-    btn_copiar.classList.add("btn_copiar");
-
-    containerBtnCopiar.appendChild(btn_copiar);
-}
-
-/**
- * Permite copiar el texto encriptado o desencriptado; funcionalidad pensada para el botón de copiar (mostrarBotonCopiar())
+ * Permite copiar el texto encriptado o desencriptado; funcionalidad pensada para el botón de copiar (insertarBotonCopiar())
  */
 export function copiarTexto(){
     /* Se selecciona aquí puesto que es un elemento generado con JavaScript y no proviene directamente del DOM,
