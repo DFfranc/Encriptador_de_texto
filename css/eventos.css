@@ -1,8 +1,4 @@
-/* Esta hoja de estilos incluye los diseños referentes a eventos generados con JavaScript tales como: 
-   - Mostrar y ocultar el texto de no hay mensajes aún
-   - Aviso de texto copiado cuando el usuario da click en el botón de copiar
-   - Mensaje de cuando el usuario está escribiendo algo 
-*/
+/* Esta hoja de estilos incluye los diseños referentes a eventos generados con JavaScript */
 @import url(./base.css);
 
 /* Mostrar y ocultar los mensajes "texto presente" y "texto no presente" según corresponda */
@@ -80,14 +76,14 @@
     left: calc(50% - 2.5rem);
 } 
 .btn_copiar.animated {
-    animation: fade-in 300ms ease-in-out forwards;
-  }
-  
-  @keyframes fade-in {
+    animation: btn_copiar 300ms ease-in-out forwards;
+}
+
+@keyframes btn_copiar {
     from {
-      opacity: 0;
+        opacity: 0;
     }
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}

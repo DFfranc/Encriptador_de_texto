@@ -6,9 +6,11 @@
     /* Dark blue*/
     --darkBlue_100: #609ED4;
     --darkBlue_200: #356EA9;
-    --darkBlue_300: #0A3871;
-    --darkBlue_400: #072B61;
-    --darkBlue_500: #052051;
+    --darkBlue_300: #1F207D;
+    --darkBlue_400: #0A3871;
+    --darkBlue_500: #072B61;
+    --darkBlue_600: #052051;
+    --darkBlue_700: #000133;
 
     /* Light blue */
     --lightBlue_100: #F3F5FC;
@@ -22,7 +24,9 @@
     --gray_200: #ADB5BD; 
     --gray_300: #868E96; 
     --gray_400: #495057; 
-    --gray_500: #343A40; 
+    --gray_500: #2D2D2D; 
+    --gray_600: #212121;
+    --gray_700: #0C0C0C;
 
     /* Neutros */
     --white: #FFFFFF;

@@ -1,22 +1,27 @@
 @import url(base.css);
 
-/* Header */
+/**** HEADER ****/
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+
+    position: relative;
 }
 .logo {
     font-size: 4rem;
     font-weight: bold;
     color: var(--darkBlue_300);
     padding: 1rem;
+    flex: 0 0 10%;
 }
 .header_texto{
     text-align: center;
     width: 100%;
     padding: 1rem;
     margin-bottom: 1rem;
+    flex: 0 0 83%;
 }
 .titulo_principal{
     color: var(--darkBlue_200);
@@ -26,31 +31,48 @@ header {
     margin: 0;
 }
 
-/* Textarea */
-.texto_entrada{
-    font-size: 3.2rem;
-    color: var(--darkBlue_200);
-    width: 100%;
-    min-height: 30rem;
-    padding: 2rem;
-    border: none;
-    border-radius: 3.2rem;
-    resize: none; 
+/* Boton para activar darkmode*/
+.container_btn_darkmode{
+    height: 4rem;
+    border-radius: 2rem;
+    flex: 0 0 30%;
+    margin: 0 auto;
+    background-color: var(--darkBlue_700);
+    position: relative;
 }
-.texto_entrada::placeholder{
-    opacity: 1;
+.movimiento {
+    position: absolute;
+    width: min-content;
+    height: min-content;
+    left: 0;
+    top: 0;
 }
-.advertencia{
-    font-size: 1.2rem;
-    color: var(--gray_400);
-    margin: 3rem 0 1.5rem 0;
+/* Posicionamiento y estilos en diferentes pantallas*/
+@media (min-width: 480px) {
+    .container_btn_darkmode{
+        width: 4rem;
+        height: 8rem;
+        position: absolute;
+        right: 0;
+    }
+    .container_btn_darkmode,
+    .header_texto,
+    .logo{
+        flex: initial;
+    }
+    header{
+        flex-wrap: initial;
+    }
 }
-.advertencia i {
-    padding-right: 1rem;
+@media (min-width: 940px) {
+    .container_btn_darkmode{
+        height: 4rem;
+        width: 10rem;
+    }
 }
 
-/* Botones */
-/* Se incluyen los botones para encriptar, desencriptar y copiar texto*/
+/**** BOTONES ****/
+/* Se incluyen los botones para encriptar, desencriptar, copiar texto y habilitar darkmode*/
 .btn_encriptar,
 .btn_desencriptar,
 .btn_copiar{
@@ -86,14 +108,64 @@ header {
 .btn_copiar:hover{
     background-color: var(--gray_100);
 }
-
 .btn_copiar{
     margin: 0;
     width: calc(100% - 3.2rem);
     align-self: center;
 }
+.btn_darkmode{
+    border: 2px solid var(--darkBlue_700);
+    border-radius: 2rem;
+    height: 4rem;
+    width: 4rem;
+    background-color: var(--darkBlue_300);
+    position: relative;
+    cursor: pointer;
+}
+.btn_darkmode::before,
+.btn_darkmode::after{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    top: calc(50% - 1rem);
+    left: calc(50% - 1rem);
+}
+.btn_darkmode::before{
+    height: 2rem;
+    width: 2rem;
+    background-color: var(--white);
+}
+.btn_darkmode::after{
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: var(--darkBlue_300);
+}
 
-/* Salida de texto */
+/**** TEXTAREA ****/
+.texto_entrada{
+    font-size: 3.2rem;
+    color: var(--darkBlue_200);
+    width: 100%;
+    min-height: 30rem;
+    padding: 2rem;
+    border: none;
+    border-radius: 3.2rem;
+    resize: none; 
+}
+.texto_entrada::placeholder{
+    opacity: 1;
+}
+.advertencia{
+    font-size: 1.2rem;
+    color: var(--gray_400);
+    margin: 3rem 0 1.5rem 0;
+}
+.advertencia i {
+    padding-right: 1rem;
+}
+
+
+/**** SALIDA DE TEXTO ****/
 .container_salida{
     background-color: var(--white);
     margin-bottom: 4rem;
@@ -104,7 +176,9 @@ header {
     flex-direction: column-reverse;
     justify-content: space-between;
 }
-
+.contenido_principal{
+    margin-top: 1rem;
+}
 
 /* Contenido principal en pantalla de PC (940px)*/
 @media (min-width: 940px) {
@@ -112,6 +186,7 @@ header {
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 8rem;
+        margin-top: 0;
     }
 
     .texto_entrada{
@@ -140,10 +215,11 @@ header {
     margin: 0;
     padding: 3.2rem;
     opacity: 0;
-    transition: opacity 100ms ease-in-out;
+    overflow-wrap: break-word;
 }
 
-/* Footer */
+
+/**** FOOTER ****/
 footer{
     background-color: var(--darkBlue_500);
     padding: 2rem;
@@ -154,4 +230,3 @@ footer{
     color: var(--gray_100);
     margin: 0;
 }
-

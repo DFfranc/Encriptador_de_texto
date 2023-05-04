@@ -1,0 +1,71 @@
+@import url(./base.css);
+
+/**** CONTENIDO ****/
+* {
+    /* transition: background-color 300ms ease-in-out, color 300ms ease-in-out, border 300ms ease-in-out ; */
+    transition: all 300ms ease-in;
+}
+body.darkmode {
+    background-color: var(--gray_600);
+}
+
+body.darkmode .logo{
+    color: var(--darkBlue_200);
+}
+
+body.darkmode .subtitulo,
+body.darkmode .advertencia,
+body.darkmode .no_texto,
+body.darkmode .si_texto,
+body.darkmode .btn_encriptar{
+    color: var(--gray_100);
+}
+
+body.darkmode .texto_entrada,
+body.darkmode .container_salida{
+    background-color: var(--gray_500);
+    border: 1px solid var(--gray_400);
+}
+
+body.darkmode .btn_desencriptar,
+body.darkmode .btn_copiar{
+    background-color: var(--gray_500);
+    border: 1px solid var(--darkBlue_200);
+    color: var(--darkBlue_100);
+}
+
+body.darkmode .btn_encriptar{
+    background-color: var(--darkBlue_500);
+}
+
+body.darkmode .btn_encriptar:hover{
+    background-color: var(--darkBlue_400);
+}
+body.darkmode .btn_desencriptar:hover,
+body.darkmode .btn_copiar:hover{
+    background-color: var(--gray_400);
+}
+
+body.darkmode .no_texto span,
+body.darkmode .si_texto span{
+    color: var(--gray_700);
+}
+
+body.darkmode .salida{
+    color: var(--darkBlue_200);
+}
+
+body.darkmode footer{
+    background-color: var(--gray_700);
+}
+
+/**** ALERTAS ****/
+body.darkmode .swal2-popup{
+    background-color: var(--gray_500);
+}
+body.darkmode .swal2-title{
+    color: var(--darkBlue_200);
+}
+body.darkmode .swal2-html-container{
+    color: var(--gray_100);
+}
