@@ -1,3 +1,4 @@
+/* Personalización de las alertas dadas por la librería SweetAlert2 */
 .swal2-popup{
     width: 37em !important;
 }

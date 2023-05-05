@@ -40,6 +40,7 @@ header {
     background-color: var(--darkBlue_700);
     position: relative;
 }
+/* Contenedor que permite el movimiento del botón para habilitar el darkmode */
 .movimiento {
     position: absolute;
     width: min-content;
@@ -80,17 +81,18 @@ header {
     width: 100%;
     padding: 2.4rem;
     border: none;
-    border-radius: 2.4rem;
 }
-.btn_encriptar:hover,
-.btn_desencriptar:hover,
-.btn_copiar {
+.btn_encriptar,
+.btn_desencriptar,
+.btn_copiar,
+.btn_darkmode {
     cursor: pointer;
+    border-radius: 2.4rem;
 }
 
 .btn_encriptar{
-    color: var(--white);
     background-color: var(--darkBlue_300);
+    color: var(--white);
     margin-bottom: 2rem;
 }
 .btn_encriptar:hover{
@@ -101,26 +103,24 @@ header {
 .btn_copiar{
     color: var(--darkBlue_300);
     background-color: var(--white);
-    margin-bottom: 6.4rem;
     border: 1px solid var(--darkBlue_300);
+    margin-bottom: 6.4rem;
+}
+.btn_copiar{
+    margin: 0;
+    width: calc(100% - 3.2rem);
 }
 .btn_desencriptar:hover,
 .btn_copiar:hover{
     background-color: var(--gray_100);
 }
-.btn_copiar{
-    margin: 0;
-    width: calc(100% - 3.2rem);
-    align-self: center;
-}
+
 .btn_darkmode{
+    background-color: var(--darkBlue_300);
     border: 2px solid var(--darkBlue_700);
-    border-radius: 2rem;
+    position: relative;
     height: 4rem;
     width: 4rem;
-    background-color: var(--darkBlue_300);
-    position: relative;
-    cursor: pointer;
 }
 .btn_darkmode::before,
 .btn_darkmode::after{
@@ -141,15 +141,25 @@ header {
     background-color: var(--darkBlue_300);
 }
 
-/**** TEXTAREA ****/
+/**** CONTENIDO PRINCIPAL ****/
+.contenido_principal{
+    margin-top: 1rem;
+}
+
+/**** ENTRADA DE TEXTO ****/
+.container_entrada{
+    /* Se utiliza display: flex para que la altura del contenido crezca con base a la altura del dispositivo */
+    display: flex;
+    flex-direction: column;
+}
 .texto_entrada{
     font-size: 3.2rem;
     color: var(--darkBlue_200);
     width: 100%;
     min-height: 30rem;
     padding: 2rem;
-    border: none;
     border-radius: 3.2rem;
+    border: none;
     resize: none; 
 }
 .texto_entrada::placeholder{
@@ -176,9 +186,6 @@ header {
     flex-direction: column-reverse;
     justify-content: space-between;
 }
-.contenido_principal{
-    margin-top: 1rem;
-}
 
 /* Contenido principal en pantalla de PC (940px)*/
 @media (min-width: 940px) {
@@ -187,12 +194,11 @@ header {
         grid-template-columns: 2fr 1fr;
         gap: 8rem;
         margin-top: 0;
+        height: 100vh; /* Permite que el contenido se adapte a pantallas con una altura muy grande */
     }
-
     .texto_entrada{
-        min-height: 40rem;
+        flex: 1; /* Permite que el textarea crezca según la altura de la pantalla*/
     }
-
     .btn_contenedor{
         display: flex;
         gap: 2.4rem;

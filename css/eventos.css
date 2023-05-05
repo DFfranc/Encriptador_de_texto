@@ -6,16 +6,14 @@
 .si_texto{
     text-align: center;
     color: var(--gray_400);
-    opacity: 1;
-    transition: opacity 250ms ease-in-out;
     padding: 3.2rem;
+    margin: auto 0;
 }
 .no_texto span,
 .si_texto span{
     display: block;
     font-size: 2.4rem;
     font-weight: 700;
-    text-align: center;
     color: var(--gray_500);
     margin-bottom: 1.6rem;
 }
@@ -47,15 +45,15 @@
     justify-content: center;
     align-items: center;
 
+    background-color: var(--darkBlue_400);
+
     position: absolute;
     top: -4rem;
     height: 3.5rem;
     padding: 1.5rem;
     border-radius: 0.5rem;
 
-    background-color: var(--darkBlue_400);
     opacity: 0;
-    transition: opacity 250ms ease-in-out;
 }
 .mostrar{
     opacity: 1;
@@ -64,6 +62,7 @@
     color: var(--white);
     margin: 0;
 }
+/* Diseño del triángulo de la parte inferior del aviso */
 .aviso_copiado::after{
     content: '';
     width: 0;
@@ -76,10 +75,9 @@
     left: calc(50% - 2.5rem);
 } 
 .btn_copiar.animated {
-    animation: btn_copiar 300ms ease-in-out forwards;
+    animation: aviso_copiado 300ms ease-in-out forwards;
 }
-
-@keyframes btn_copiar {
+@keyframes aviso_copiado {
     from {
         opacity: 0;
     }

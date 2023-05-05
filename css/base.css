@@ -37,18 +37,27 @@ html {
     box-sizing: border-box;
     font-size: 62.5%;
 }
-
 *, *:before, *:after {
     box-sizing: inherit;
 }
-
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif; /* Fuente importada desde Google fonts */
     font-size: 16px;
     background-color: var(--lightBlue_200);
+    
+}
+html, body{
+    min-height: 100%;
 }
 
+/* Contenedores */
 .container{
+    /* Permite que el contenido crezca con base en la altura del dispositivo y que el footer permanezca
+    siempre en la parte inferior*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
     width: min(95%, 120rem);
     margin: 0 auto;
 }
