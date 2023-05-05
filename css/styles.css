@@ -145,6 +145,14 @@ header {
 .contenido_principal{
     margin-top: 1rem;
 }
+@media (min-width: 768px) {
+    /* Distribución correcta de la altura en dispositivos con un ancho mayor a 768px*/
+    .contenido_principal {
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 /**** ENTRADA DE TEXTO ****/
 .container_entrada{
@@ -180,6 +188,7 @@ header {
     background-color: var(--white);
     margin-bottom: 4rem;
     border-radius: 3.2rem;
+    flex: 1;
 
     /* Estilos necesarios para cuando se agrega el botón de copiar */
     display: flex;
